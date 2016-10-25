@@ -86,8 +86,8 @@ angular.module('hikeplanner', [
 
   // authentication via Auth0
   authProvider.init({
-    domain: client_domain,
-    clientID: client_id,
+    domain: 'techericsmith.auth0.com',
+    clientID: 'hZhRli68BSAMLHLYkIHMjv3lsfO7rhXS',
     // callbackURL: location.href,
     loginState: 'signin'
   });
