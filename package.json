@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MagWeaver/hrr16-allosaurus.git"
+    "url": "git+https://github.com/ericdsmith/hrr16-allosaurus.git"
   },
   "author": "Eric, Tim, Chris",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MagWeaver/hrr16-allosaurus/issues"
+    "url": "https://github.com/ericdsmith/hrr16-allosaurus/issues"
   },
   "dependencies": {
     "grunt": "^0.4.4",

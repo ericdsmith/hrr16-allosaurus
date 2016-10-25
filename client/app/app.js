@@ -1,6 +1,3 @@
-var client_id = process.env.AUTH0_CLIENT_ID;
-var client_domain = process.env.AUTH0_DOMAIN;
-
 angular.module('hikeplanner', [
   'ui.router',
   'ngAnimate',
