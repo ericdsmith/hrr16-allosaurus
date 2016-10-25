@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css" />
-    
-    <script src="lib/auth0-lock/build/auth0-lock.min.js"></script>
+
+    <script src="http://cdn.auth0.com/js/lock-9.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/auth0-angular/build/auth0-angular.min.js"></script>
     <script src="lib/a0-angular-storage/dist/angular-storage.min.js"></script>
     <script src="lib/angular-jwt/dist/angular-jwt.min.js"></script>
-  
+
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="lib/angular-animate/angular-animate.min.js"></script>
@@ -26,7 +26,7 @@
 
   <body ng-app="hikeplanner" ng-controller="backgroundController">
     <div ui-view class="back" ng-style="{'background-image':'url(' + img.url + ')'}"></div>
-    
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9zrj84r3C4q6XKvrIdJwxOMHy4w8g3ys&libraries=places" async defer></script>
   </body>
