@@ -1,3 +1,6 @@
+var client_id = process.env.AUTH0_CLIENT_ID;
+var client_domain = process.env.AUTH0_DOMAIN;
+
 angular.module('hikeplanner', [
   'ui.router',
   'ngAnimate',
@@ -23,10 +26,10 @@ angular.module('hikeplanner', [
 })
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, authProvider, $locationProvider, jwtInterceptorProvider) {
-  
+
   // routing for all the different states
   $stateProvider
-  
+
     .state('signin', {
       url: '/signin',
       templateUrl: 'app/auth/signin.html',
@@ -40,7 +43,7 @@ angular.module('hikeplanner', [
         requiresLogin: true
       }
     })
-    
+
     // new-trip
     .state('home.new-trip', {
       url: '/new-trip',
@@ -73,27 +76,27 @@ angular.module('hikeplanner', [
       url: '/summary',
       templateUrl: 'app/new-trip/new-trip-summary.html'
     })
-    
+
     // existing trips
     .state('home.itinerary', {
       url: '/itinerary',
       templateUrl: 'app/existing/itinerary.html',
       controller: 'existingController'
     });
-    
+
   $urlRouterProvider.otherwise('/signin');
-  
-  
+
+
   // authentication via Auth0
   authProvider.init({
-    domain: 'allosaurus.auth0.com',
-    clientID: 'YGqCODwSssRJssk0b3wDJyoyb3eH6foU',
+    domain: client_domain,
+    clientID: client_id,
     // callbackURL: location.href,
     loginState: 'signin'
   });
-  
-  
-  
+
+
+
   // event listeners of login success, failure, and∑ authentication
   authProvider.on('loginSuccess', function($rootScope, $state, profilePromise, idToken, store) {
     console.log('Login Success');
@@ -114,22 +117,22 @@ angular.module('hikeplanner', [
   authProvider.on('authenticated', function() {
     console.log('Authenticated');
   });
-  
+
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
   };
-  
+
   $httpProvider.interceptors.push('jwtInterceptor');
 
 })
 .run(function($rootScope, auth, store, jwtHelper, $state) {
   $rootScope.$on('$locationChangeStart', function() {
     var token = store.get('token');
-    
+
     // console.log('token', !!token); // check to see if there is a token
     // console.log('token expired????', jwtHelper.isTokenExpired(token)); // check to see if token has expired (based on settings in Auth0)
     // console.log('auth authen????', auth.isAuthenticated); // eg. if authenticated using google and you logout of google, on page refresh, auth.isAuthenticated will return false
-    
+
     if( token ) {
       if( !auth.isAuthenticated ) {
         if( !jwtHelper.isTokenExpired(token) ) {
@@ -141,11 +144,3 @@ angular.module('hikeplanner', [
     }
   });
 });
-
-
-
-
-
-
-
-
